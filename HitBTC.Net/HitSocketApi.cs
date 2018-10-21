@@ -55,11 +55,6 @@ namespace HitBTC.Net
         /// Occurs when new notification (e.g. ticker or book) has arrived
         /// </summary>
         public event HitEventHandler Notification;
-
-        /// <summary>
-        /// Occurs on any order updates such as open, modify, cancel, etc.
-        /// </summary>
-        public event HitEventHandler NewReport;
         #endregion Properties
 
         /// <summary>
@@ -494,7 +489,6 @@ namespace HitBTC.Net
 
                 var method = jObject["method"]?.ToObject<HitNotificationMethod>();
                 var id = jObject["id"]?.ToObject<string>();
-                var reportType = jObject["reportType"]?.ToObject<HitReportType>();
 
                 // Notification
                 if (method != null)
@@ -504,31 +498,10 @@ namespace HitBTC.Net
                     if (notification != null) 
                         this.OnNotification(notification);
                 }
+                
                 // Response
-                else if (id != null)
-                {
-                    this.waitersCache.TryGetValue(id, out var hitResponseWaiter);
-
-                    if (reportType != null)
-                    {
-                        var report = jObject.ToObject<HitReport>();
-
-                        if (report != null)
-                        {
-                            this.OnNewReport(report);
-
-                            hitResponseWaiter?.SetResponse(new HitResponse<HitReport>
-                            {
-                                Id = id,
-                                Result = report
-                            });
-                        }
-                    }
-                    else
-                        hitResponseWaiter?.TryParseResponse(jObject);
-                }
-
-
+                if (id != null && this.waitersCache.TryGetValue(id, out var hitResponseWaiter))
+                    hitResponseWaiter.TryParseResponse(jObject);
             }
             catch (Exception ex)
             {
@@ -566,8 +539,6 @@ namespace HitBTC.Net
             => this.ConnectionStateChanged?.Invoke(this, new HitEventArgs(connectionState, connectionState == HitConnectionState.Failed ? this.lastSocketError : null));
 
         private void OnNotification(HitNotification hitNotification) => this.Notification?.Invoke(this, new HitEventArgs(hitNotification));
-
-        private void OnNewReport(HitReport hitReport) => this.NewReport?.Invoke(this, new HitEventArgs(hitReport));
 
         private IHitResponseWaiter CreateWaiter<T>(string id)
         {

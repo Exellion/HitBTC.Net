@@ -43,13 +43,6 @@ namespace HitBTC.Net.Utils
         }
 
         public HitResponse<TResult> GetResponse<TResult>() => this.response as HitResponse<TResult>;
-
-        public void SetResponse(HitResponse response)
-        {
-            this.response = response as HitResponse<T>;
-
-            this.Abort();
-        }
     }
 
     internal interface IHitResponseWaiter
@@ -59,7 +52,5 @@ namespace HitBTC.Net.Utils
         void TryParseResponse(JObject jObject);
 
         HitResponse<TResult> GetResponse<TResult>();
-
-        void SetResponse(HitResponse response);
     }
 }

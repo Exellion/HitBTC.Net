@@ -39,7 +39,7 @@ namespace HitBTC.Net.Models
         /// Order type (limit, market, stopLimit, stopMarket)
         /// </summary>
         [JsonProperty("type")]
-        public HitOrderType Type { get; private set; }
+        public HitOrderType OrderType { get; private set; }
 
         /// <summary>
         /// Time in force is a special instruction used when placing a trade to indicate how long an order will remain active before it is executed or expires 

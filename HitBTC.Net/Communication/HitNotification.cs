@@ -27,6 +27,10 @@ namespace HitBTC.Net.Communication
                 case HitNotificationMethod.SnapshotCandles:
                 case HitNotificationMethod.UpdateCandles:
                     return jObject.ToObject<HitNotification<HitCandleData>>();
+                case HitNotificationMethod.ActiveOrders:
+                    return jObject.ToObject<HitNotification<HitOrder[]>>();
+                case HitNotificationMethod.Report:
+                    return jObject.ToObject<HitNotification<HitReport>>();
                 default:
                     return null;
             }

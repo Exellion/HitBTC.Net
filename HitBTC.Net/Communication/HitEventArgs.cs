@@ -9,7 +9,17 @@ namespace HitBTC.Net.Communication
 
         public Exception SocketError { get; private set; }
 
-        public HitNotification Notification { get; private set; }
+        public HitNotificationMethod NotificationMethod { get; private set; }
+
+        public HitTicker Ticker { get; private set; }
+
+        public HitOrderBookData OrderBook { get; private set; }
+
+        public HitTradesData Trades { get; private set; }
+
+        public HitCandleData Candles { get; private set; }
+
+        public HitOrder[] ActiveOrders { get; private set; }
 
         public HitReport Report { get; private set; }
 
@@ -18,8 +28,31 @@ namespace HitBTC.Net.Communication
         internal HitEventArgs(HitConnectionState connectionState, Exception socketError)
             : this(connectionState) => this.SocketError = socketError;
 
-        internal HitEventArgs(HitNotification hitNotification) => this.Notification = hitNotification;
+        internal HitEventArgs(HitNotification hitNotification)
+        {
+            this.NotificationMethod = hitNotification.Method;
 
-        internal HitEventArgs(HitReport hitReport) => this.Report = hitReport;
+            switch(hitNotification)
+            {
+                case HitNotification<HitTicker> ticker:
+                    this.Ticker = ticker.Params;
+                    break;
+                case HitNotification<HitOrderBookData> orderBook:
+                    this.OrderBook = orderBook.Params;
+                    break;
+                case HitNotification<HitTradesData> trades:
+                    this.Trades = trades.Params;
+                    break;
+                case HitNotification<HitCandleData> candles:
+                    this.Candles = candles.Params;
+                    break;
+                case HitNotification<HitOrder[]> orders:
+                    this.ActiveOrders = orders.Params;
+                    break;
+                case HitNotification<HitReport> report:
+                    this.Report = report.Params;
+                    break;
+            }
+        }
     }
 }
