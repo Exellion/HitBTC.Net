@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HitBTC.Net", "HitBTC.Net\HitBTC.Net.csproj", "{4FB681C2-8258-4A77-AC36-59F0893E1B18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HitBTC.Net.Tests", "HitBTC.Net.Tests\HitBTC.Net.Tests.csproj", "{68DC546E-7A2C-4626-935C-9FEA9DC52AD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4FB681C2-8258-4A77-AC36-59F0893E1B18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FB681C2-8258-4A77-AC36-59F0893E1B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FB681C2-8258-4A77-AC36-59F0893E1B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FB681C2-8258-4A77-AC36-59F0893E1B18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68DC546E-7A2C-4626-935C-9FEA9DC52AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68DC546E-7A2C-4626-935C-9FEA9DC52AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68DC546E-7A2C-4626-935C-9FEA9DC52AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68DC546E-7A2C-4626-935C-9FEA9DC52AD4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C74B35E1-C463-4870-AD60-A39F823D7DD0}
+	EndGlobalSection
+EndGlobal
