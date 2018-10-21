@@ -7,7 +7,7 @@ The API are separate on two global parts: REST and WebSockets. Each part provide
 ## Installation
 Using [Nuget](https://www.nuget.org/packages/HitBTC.Net/) Package Manager:
 ```
-PM> Install-Package HitBTC.Net
+PM> Install-Package HitBTC.Net -Version 1.0.0-beta
 ```
 
 ## Samples
@@ -61,7 +61,7 @@ var response = restApi.GetCandlesAsync("BTCUSD", HitPeriod.Minute15, 500).Result
 // Handle response like in a sample above
 ```
 
-In the same manner you can receive all other market data:
+You can receive all other market data in the same manner:
 ```c#
 using HitBTC.Net;
 using HitBTC.Net.Models;
