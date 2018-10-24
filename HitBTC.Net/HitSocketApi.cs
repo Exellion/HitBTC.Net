@@ -89,7 +89,13 @@ namespace HitBTC.Net
         {
             this.ConnectionState = HitConnectionState.Connecting;
 
-            await this.socket.OpenAsync();
+            await Task.Factory.StartNew(() => 
+            {
+                this.socket.Open();
+
+                while (this.ConnectionState == HitConnectionState.Connecting)
+                    Task.Delay(100);
+            });
         }
 
         /// <summary>
@@ -98,9 +104,15 @@ namespace HitBTC.Net
         /// <returns></returns>
         public async Task DisconnectAsync()
         {
-            await this.socket.CloseAsync();
+            this.ConnectionState = HitConnectionState.Disconnecting;
 
-            this.ConnectionState = HitConnectionState.Disconnected;
+            await Task.Factory.StartNew(() =>
+            {
+                this.socket.Close();
+
+                while (this.ConnectionState == HitConnectionState.Disconnecting)
+                    Task.Delay(100);
+            });
         }
 
         #region Market data

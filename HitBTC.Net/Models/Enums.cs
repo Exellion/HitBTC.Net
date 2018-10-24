@@ -123,6 +123,7 @@ namespace HitBTC.Net.Models
         Connecting,
         Connected,
         Failed,
+        Disconnecting,
         Disconnected
     }
 
