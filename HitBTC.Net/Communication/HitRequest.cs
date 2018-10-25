@@ -21,11 +21,9 @@ namespace HitBTC.Net.Communication
         private const char ID_DELIMITER = '_';
 
         public HitRequest(HitRequestParameters hitRequestParameters)
-            : this(hitRequestParameters.HitRequestMethod) => this.Params = hitRequestParameters;
-
-        public HitRequest(HitRequestMethod method)
         {
-            this.Method = method;
+            this.Params = hitRequestParameters;
+            this.Method = hitRequestParameters.HitRequestMethod;
             this.Id = GenerateRequestId(this.Method.ToString());
         }
 

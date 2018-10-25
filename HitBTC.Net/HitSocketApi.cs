@@ -472,7 +472,7 @@ namespace HitBTC.Net
         /// <returns></returns>
         public async Task<HitResponse<HitReport[]>> GetActiveOrdersAsync(CancellationToken cancellationToken = default)
         {
-            var request = new HitRequest(HitRequestMethod.GetOrders);
+            var request = new HitRequest(new HitGetActiveOrdersParameters());
 
             return await this.MakeRequestAsync<HitReport[]>(request, cancellationToken);
         }
@@ -484,7 +484,7 @@ namespace HitBTC.Net
         /// <returns></returns>
         public async Task<HitResponse<HitBalance[]>> GetTradingBalanceAsync(CancellationToken cancellationToken = default)
         {
-            var request = new HitRequest(HitRequestMethod.GetTradingBalance);
+            var request = new HitRequest(new HitGetTradingBalanceParameters());
 
             return await this.MakeRequestAsync<HitBalance[]>(request, cancellationToken);
         }
