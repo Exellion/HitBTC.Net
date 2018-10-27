@@ -445,7 +445,7 @@ namespace HitBTC.Net
         /// <param name="strictValidate">Price and quantity will be checked that they increment within tick size and quantity step. See symbol tickSize and quantityIncrement</param>
         /// <param name="cancellationToken">Token for cancel operation</param>
         /// <returns></returns>
-        public async Task<HitResponse<HitReport>> ReplaceOrderAsync(string clientOrderId, string requestClientId, decimal quantity, decimal price, bool strictValidate = true, CancellationToken cancellationToken = default)
+        public async Task<HitResponse<HitReport>> ReplaceOrderAsync(string clientOrderId, decimal quantity, decimal price, string requestClientId = null, bool strictValidate = true, CancellationToken cancellationToken = default)
         {
             if (requestClientId == null)
                 requestClientId = GenerateId();
