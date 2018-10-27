@@ -2,15 +2,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>1.0.3-beta</Version>
+    <Version>1.0.4-beta</Version>
     <Authors>Konstantin Ivanov</Authors>
     <Company>Konstantin Ivanov</Company>
     <Description>The simple API wrapper for world-wide crypto exchange HitBTC (based on API v2.0)</Description>
     <PackageTags>hitbtc api exchange c# .net crypto</PackageTags>
     <PackageProjectUrl>https://github.com/Exellion/HitBTC.Net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Exellion/HitBTC.Net</RepositoryUrl>
-    <PackageReleaseNotes>- fix HitSocketApi.GetTradingBalanceAsync()
-- fix HitSocketApi.GetActiveOrdersAsync()</PackageReleaseNotes>
+    <PackageReleaseNotes>- fix order id generation</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <LangVersion>latest</LangVersion>
