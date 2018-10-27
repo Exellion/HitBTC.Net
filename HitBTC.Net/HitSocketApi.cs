@@ -397,11 +397,7 @@ namespace HitBTC.Net
                 orderType = HitOrderType.StopLimit;
 
             if (clientOrderId == null)
-                clientOrderId = Convert.ToBase64String(Guid.NewGuid().ToByteArray())
-                    .TrimEnd('=')
-                    .Replace("+", "")
-                    .Replace(@"\", "")
-                    .Replace(@"/", "");
+                clientOrderId = GenerateId();
 
             var parameters = new HitNewOrderParameters
             {
@@ -451,6 +447,9 @@ namespace HitBTC.Net
         /// <returns></returns>
         public async Task<HitResponse<HitReport>> ReplaceOrderAsync(string clientOrderId, string requestClientId, decimal quantity, decimal price, bool strictValidate = true, CancellationToken cancellationToken = default)
         {
+            if (requestClientId == null)
+                requestClientId = GenerateId();
+
             var parameters = new HitReplaceOrderParameters
             {
                 ClientOrderId = clientOrderId,
@@ -573,6 +572,12 @@ namespace HitBTC.Net
 
             return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
         }
+
+        private static string GenerateId() => Convert.ToBase64String(Guid.NewGuid().ToByteArray())
+            .TrimEnd('=')
+            .Replace("+", "")
+            .Replace(@"\", "")
+            .Replace(@"/", "");
         #endregion Misc
     }
 
