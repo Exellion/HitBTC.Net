@@ -109,6 +109,8 @@ var restApi = new HitRestApi(new HitConfig
 
 ***Receive account trading balances:***
 ```c#
+using HitBTC.Net;
+
 // Create REST API wrapper
 var restApi = new HitRestApi(new HitConfig
 {
