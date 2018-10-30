@@ -7,6 +7,7 @@ namespace HitBTC.Net.Models
         /// <summary>
         /// Trading symbol
         /// </summary>
+        [JsonProperty("symbol")]
         public string Symbol { get; private set; }
 
         /// <summary>
