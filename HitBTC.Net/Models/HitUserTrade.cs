@@ -5,6 +5,11 @@ namespace HitBTC.Net.Models
     public class HitUserTrade : HitTrade
     {
         /// <summary>
+        /// Trading symbol
+        /// </summary>
+        public string Symbol { get; private set; }
+
+        /// <summary>
         /// Unique identifier for Order as assigned by trader.
         /// </summary>
         [JsonProperty("clientOrderId")]
