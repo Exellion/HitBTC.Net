@@ -2,14 +2,17 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>1.0.6-beta</Version>
+    <Version>1.0.7-beta</Version>
     <Authors>Konstantin Ivanov</Authors>
     <Company>Konstantin Ivanov</Company>
     <Description>The simple API wrapper for world-wide crypto exchange HitBTC (based on API v2.0)</Description>
     <PackageTags>hitbtc api exchange c# .net crypto</PackageTags>
     <PackageProjectUrl>https://github.com/Exellion/HitBTC.Net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Exellion/HitBTC.Net</RepositoryUrl>
-    <PackageReleaseNotes>- add Symbol property to user trade history</PackageReleaseNotes>
+    <PackageReleaseNotes>- improve errors in socket api</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.7.0</AssemblyVersion>
+    <FileVersion>1.0.7.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <LangVersion>latest</LangVersion>

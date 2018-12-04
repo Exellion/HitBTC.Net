@@ -9,7 +9,7 @@ namespace HitBTC.Net.Communication
         public string JsonRpc { get; private set; }
 
         [JsonProperty("error")]
-        public HitError Error { get; private set; }
+        public HitError Error { get; internal set; }
 
         [JsonProperty("id")]
         public string Id { get; internal set; }
