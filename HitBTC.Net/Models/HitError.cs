@@ -60,6 +60,9 @@ namespace HitBTC.Net.Models
         [JsonProperty("description")]
         public string Description { get; private set; }
 
+        internal HitError()
+        { }
+
         internal HitError(int code, string message, string description = "")
         {
             this.Code = code;
