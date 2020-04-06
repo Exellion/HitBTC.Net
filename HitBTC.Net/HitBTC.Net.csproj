@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Konstantin Ivanov</Authors>
     <Company>Konstantin Ivanov</Company>
     <Description>The simple API wrapper for world-wide crypto exchange HitBTC (based on API v2.0)</Description>
