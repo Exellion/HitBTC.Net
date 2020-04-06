@@ -157,7 +157,29 @@ namespace HitBTC.Net
                 "public/candles",
                 $"{symbol}?" +
                 $"{period.TryCreateParameter("period")}" +
-                $"{limit.TryCreateParameter("limit")}");
+                $"{limit.TryCreateParameter("limit")}" +
+                $"sort=DESC");
+        
+        /// <summary>
+        /// An candles used for OHLC a specific symbol. Result contain candles only with non zero volume.
+        /// </summary>
+        /// <param name="symbol">Symbol name (e.g. "BTCUSDT")</param>
+        /// <param name="from">Interval initial value</param>
+        /// <param name="till">Interval end value</param>
+        /// <param name="period">Candle period. From Minute1 to Month1</param>
+        /// <param name="cancellationToken">Token for cancel operation</param>
+        /// <returns></returns>
+        public async Task<HitResponse<HitCandle[]>> GetCandlesAsync(string symbol, DateTime? from, DateTime? till, HitPeriod? period = null, int? limit = null, CancellationToken cancellationToken = default) =>
+            await this.MakeRequestAsync<HitCandle[]>(
+                HttpMethod.Get,
+                cancellationToken,
+                "public/candles",
+                $"{symbol}?" +
+                $"{from.TryCreateParameter("from")}" +
+                $"{till.TryCreateParameter("till")}" +
+                $"{period.TryCreateParameter("period")}" +
+                $"{limit.TryCreateParameter("limit")}" +
+                $"sort=ASC");
         #endregion Public Rest API
 
         #region Authentication Rest API

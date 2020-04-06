@@ -198,7 +198,7 @@ namespace HitBTC.Net.Tests
             ResponseBasicCheck(response);
 
             Assert.IsTrue(response.Result.Length >= 2);
-            Assert.IsTrue(response.Result[0].Timestamp > response.Result[1].Timestamp);
+            Assert.IsTrue(response.Result[0].Timestamp < response.Result[1].Timestamp);
         }
 
         [TestMethod]
@@ -328,7 +328,7 @@ namespace HitBTC.Net.Tests
             ResponseBasicCheck(response);
 
             Assert.AreEqual(DEFAULT_CONTENT_LENGTH, response.Result.Length);
-            Assert.IsTrue(response.Result[1].Timestamp - response.Result[0].Timestamp == TimeSpan.FromMinutes(1));
+            Assert.AreEqual(response.Result[0].Timestamp - response.Result[1].Timestamp, TimeSpan.FromMinutes(1));
         }
 
         [TestMethod]
@@ -343,6 +343,23 @@ namespace HitBTC.Net.Tests
             ResponseBasicCheck(response);
 
             Assert.AreEqual(limit, response.Result.Length);
+        }
+        
+        [TestMethod]
+        public void GetCandlesAsyncFromTillTest()
+        {
+            var client = new HitRestApi();
+            var symbol = "BTCUSD";
+            var period = HitPeriod.Hour1;
+            var from = new DateTime(2020, 4, 5);
+            var till = new DateTime(2020, 4, 6);
+
+            var response = client.GetCandlesAsync(symbol, from, till, period).Result;
+
+            ResponseBasicCheck(response);
+
+            Assert.AreEqual(24, response.Result.Length);
+            Assert.AreEqual(response.Result[1].Timestamp - response.Result[0].Timestamp, TimeSpan.FromHours(1));
         }
 
         #region Misc
